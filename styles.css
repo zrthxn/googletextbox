@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+.here {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin: 5em auto;
+}
+
+/* COPY EVERYTHING BELOW */
+
+.container {
+    margin: 1em;
+    /* Set width of textbox here */
+    width: 10em;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.textbox {
+    width: 100%;
+    padding: 0.5em 0;
+    border: none;
+    transition: 0.25s border-width ease-in-out;
+    background-color: transparent;
+    text-align: left;
+}
+
+/* Bottom Border */
+.border {
+    height: 1px;
+    width: 100%;
+    background-color: gray;
+    opacity: 0.25;
+    z-index: 10;
+} .border-active {
+    height: 2px;
+    width: 0%;
+    margin-left: 50%;
+    z-index: 20;
+    margin-top: -1px;
+    background-color: #0084ff;
+    transition: 0.2s all ease-in-out;
+}
+.textbox:focus ~ .border-active, .has-content ~ .border-active {
+    width: 100%;
+    margin-left: 0;
+    transition: 0.3s all ease-in-out;
+}
+
+/* Text that shows above textbox */
+.label {
+    position: absolute; 
+    left: 0; 
+    width: 100%; 
+    top: 5px; 
+    color: #aaa; 
+    z-index: -1; 
+    transition: 0.2s all ease-in-out;
+    text-align: left;
+}
+
+.textbox:focus ~ .label, .has-content ~ .label {
+    top: -15px; 
+    font-size: 12px; 
+    color: #0084ff; 
+    letter-spacing: 0.25px;
+    transition: 0.3s all ease-in-out;
+}
+
+/* Hint Text */
+.hint {
+    margin-top: 5px;
+    font-size: 12px;
+    color: transparent;
+    text-align: left;
+}
+.textbox:focus ~ .hint {
+    color: #aaa;
+}

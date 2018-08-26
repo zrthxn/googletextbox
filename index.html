@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <h1>Google Textboxes</h1>
+    <p><b>Hey man!</b><br> Here's an example of Google's textboxes</p>
+
+    <div class="here">
+        <div class="container">
+            <input id="field" type="text" class="textbox">
+            <label class="label">First name</label>
+            <span class="border"></span><span class="border-active"></span>
+            <label class="hint">Enter your hint text</label>
+        </div>
+    
+        <div class="container">
+            <input id="address" type="text" class="textbox">
+            <label class="label">Last Name</label>
+            <span class="border"></span><span class="border-active"></span>
+            <label class="hint">Enter your hint text</label>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    // Add this line for every textbox
+    document.getElementById("field").onchange = () => checkContent(document.getElementById("field"))
+    document.getElementById("address").onchange = () => checkContent(document.getElementById("address"))
+
+    function checkContent(element) {
+        if (element.value !== "") {
+            $(element).addClass("has-content");
+        } else {
+            $(element).removeClass("has-content");
+        }
+    }
+</script>
+
+</html>
+
