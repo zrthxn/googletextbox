@@ -7,10 +7,9 @@
 body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
-}
-
-input:focus, textarea:focus {
-    outline: none;
+    
+    display: flex;
+    flex-direction: column;
 }
 
 .here {
@@ -20,12 +19,26 @@ input:focus, textarea:focus {
     margin: 5em auto;
 }
 
+.there{
+    text-align: left;
+    margin: auto;
+}
+
+#check {
+    width: 5em;
+    left: 50%;
+}
+
 /* COPY EVERYTHING BELOW */
+input:focus, textarea:focus {
+    outline: none !important;
+}
 
 .container {
     margin: 1em;
     /* Set width of textbox here */
     width: 10em;
+    /* ========================= */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -51,15 +64,18 @@ input:focus, textarea:focus {
     height: 2px;
     width: 0%;
     margin-left: 50%;
+    margin-bottom: 20px;
     z-index: 20;
     margin-top: -1px;
     background-color: #0084ff;
-    transition: 0.2s all ease-in-out;
+    transition: 0.2s width margin-left ease-in-out;
 }
-.textbox:focus ~ .border-active, .has-content ~ .border-active {
+.textbox:focus ~ .border-active, 
+.has-content ~ .border-active {
     width: 100%;
     margin-left: 0;
-    transition: 0.3s all ease-in-out;
+    margin-bottom: 0;
+    transition: 0.3s width margin-left ease-in-out;
 }
 
 /* Text that shows above textbox */
@@ -84,11 +100,21 @@ input:focus, textarea:focus {
 
 /* Hint Text */
 .hint {
+    display: none;
     margin-top: 5px;
     font-size: 12px;
-    color: transparent;
+    color: #aaa;
     text-align: left;
 }
 .textbox:focus ~ .hint {
-    color: #aaa;
+    display: block;
+}
+
+/* Error Class */
+.error ~ .border-active {
+    background-color: #ff0000;
+}
+.textbox:focus[class~='error'] ~ label[class~='label'],
+.has-content[class~='error'] ~ label[class~='label'] {
+    color: #ff0000;
 }

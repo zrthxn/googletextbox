@@ -27,6 +27,32 @@
             <span class="border"></span><span class="border-active"></span>
             <label class="hint">Enter your hint text</label>
         </div>
+        
+        <div class="container">
+            <input id="error-demo" type="text" class="textbox">
+            <label class="label">Error</label>
+            <span class="border"></span><span class="border-active"></span>
+            <label class="hint">Enter "ABCD" for error</label>
+        </div>
+    </div>
+
+    <!-- <button id="check">CHECK</button> -->
+
+    <div class="there">
+        <h3>You can add the following features</h3>
+
+        <ul>
+            <li>Hint text</li>
+            <li>Error text</li>
+            <li>JavaScript validation</li>
+        </ul>
+    
+        <p>and whatever else you like</p>
+        
+        <p>This can also be used as an individual React component<br>
+        to abstract all of the complications into one file.</p>
+    
+        <h2>Use this however you like</h2>
     </div>
 
 </body>
@@ -35,12 +61,32 @@
     // Add this line for every textbox
     document.getElementById("field").onchange = () => checkContent(document.getElementById("field"))
     document.getElementById("address").onchange = () => checkContent(document.getElementById("address"))
+    
+    document.getElementById("error-demo").onchange = () => {
+        let err = document.getElementById("error-demo");
+        checkContent(err);
+        if(err.value==="ABCD") {
+            $(err).addClass("error");
+        } else {
+            $(err).removeClass("error");
+        }
+    }
 
     function checkContent(element) {
         if (element.value !== "") {
             $(element).addClass("has-content");
         } else {
             $(element).removeClass("has-content");
+        }
+    }
+
+    document.getElementById("check").onclick = () => {
+        let err = document.getElementById("error-demo"); 
+        if(err.value==="ABCD") {
+            // GET JUST THE TEXTBOX AND ADD CLASS "error"
+            $(err).addClass("error");
+        } else {
+            $(err).removeClass("error");
         }
     }
 </script>
